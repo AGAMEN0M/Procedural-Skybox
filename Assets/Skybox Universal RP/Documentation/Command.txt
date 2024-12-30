@@ -1,0 +1,2 @@
+Give a detailed explanation of the script without using csharp
+
