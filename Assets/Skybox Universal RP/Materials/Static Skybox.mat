@@ -72,8 +72,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BUILTIN_QueueControl: -1
-    - _BUILTIN_QueueOffset: 0
     - _FlowSpeed: 0.02
     - _MilkywayIntensity: 0.2666667
     - _MoonIntensity: 2.01

@@ -35,7 +35,13 @@ public class SkyTimeDataController : MonoBehaviour
         newData = ScriptableObject.CreateInstance<SkyTimeData>(); // Create a new instance of SkyTimeData.
     }
 
-    // Get the interpolated SkyTimeData based on the time of day.
+    /// <summary>
+    /// Returns a new interpolated SkyTimeData instance based on the given time of day.
+    /// It blends between two SkyTimeData objects defined in the SkyTimeDataCollection.
+    /// Also updates ambient lighting if configured to do so.
+    /// </summary>
+    /// <param name="time">Time of day in the 0–24 range.</param>
+    /// <returns>The interpolated SkyTimeData instance.</returns>
     public SkyTimeData GetSkyTimeData(float time)
     {
         // Initialize start and end SkyTimeData instances.
@@ -129,7 +135,15 @@ public class SkyTimeDataController : MonoBehaviour
         RenderSettings.ambientGroundColor = ambientGroundColor;
     }
 
-    // Generate a sky gradient texture based on two gradients and a lerp value.
+    /// <summary>
+    /// Generates a Texture2D from two gradients by interpolating between them.
+    /// Useful for creating smooth sky transitions.
+    /// </summary>
+    /// <param name="startGradient">Gradient representing the start sky color.</param>
+    /// <param name="endGradient">Gradient representing the end sky color.</param>
+    /// <param name="resolution">Resolution of the texture (horizontal pixels).</param>
+    /// <param name="lerpValue">Lerp value between 0 and 1 for blending gradients.</param>
+    /// <returns>The generated Texture2D representing the sky gradient.</returns>
     public Texture2D GenerateSkyGradientColorTex(Gradient startGradient, Gradient endGradient, int resolution, float lerpValue)
     {
         // Create a new texture with specified resolution.

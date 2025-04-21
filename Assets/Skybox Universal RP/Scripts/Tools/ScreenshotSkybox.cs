@@ -23,9 +23,13 @@ public class ScreenshotSkybox : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private int pixelSize = 2048; // Pixel size for screenshot rendering.
     [Space(10)]
-    public Camera[] cameras; // Array of cameras needed to capture the skybox in 360 degrees.
+    public Camera[] cameras = new Camera[6]; // Array of cameras needed to capture the skybox in 360 degrees.
 
-    // Method to take a screenshot of the skybox.
+    private readonly string screenshotFolder = $"{Application.dataPath}/Screenshots"; // Path where screenshots will be saved.
+
+    /// <summary>
+    /// Captures a 360-degree screenshot of the skybox using six cameras and saves the images as PNG files.
+    /// </summary>
     public void TakeScreenshot()
     {
         // Checks if there are exactly 6 cameras for the 360 screenshot.
@@ -38,7 +42,6 @@ public class ScreenshotSkybox : MonoBehaviour
         ApplyCameraPositionsAndRotations(); // Applies the correct positions and rotations to cameras.
 
         // Create the folder to save screenshots, if it doesn't already exist.
-        string screenshotFolder = $"{Application.dataPath}/Screenshots";
         if (!Directory.Exists(screenshotFolder))
         {
             Directory.CreateDirectory(screenshotFolder);
@@ -67,6 +70,14 @@ public class ScreenshotSkybox : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Opens the folder where screenshots are saved.
+    /// </summary>
+    public void OpenScreenshotFolder()
+    {
+        Application.OpenURL(screenshotFolder);
+    }
+
     // Method for applying the correct positions and rotations to cameras.
     private void ApplyCameraPositionsAndRotations()
     {
@@ -76,13 +87,6 @@ public class ScreenshotSkybox : MonoBehaviour
         cameras[3].transform.SetPositionAndRotation(Vector3.zero, new Quaternion(0f, -0.7071068f, 0f, 0.7071068f));
         cameras[4].transform.SetPositionAndRotation(Vector3.zero, new Quaternion(-0.7071068f, 0f, 0f, 0.7071068f));
         cameras[5].transform.SetPositionAndRotation(Vector3.zero, new Quaternion(0.7071068f, 0f, 0f, 0.7071068f));
-    }
-
-    // Method to open the folder where screenshots are saved.
-    public void OpenScreenshotFolder()
-    {
-        string screenshotFolder = $"{Application.dataPath}/Screenshots";
-        Application.OpenURL(screenshotFolder);
     }
 }
 
@@ -95,8 +99,8 @@ public class ScreenshotSkyboxEditor : Editor
     {
         serializedObject.Update();
         ScreenshotSkybox script = (ScreenshotSkybox)target;
-        if (GUILayout.Button("Take Screenshot")) { script.TakeScreenshot(); } // Button to take the screenshot.
-        if (GUILayout.Button("Open Folder")) { script.OpenScreenshotFolder(); } // Button to open the screenshots folder.
+        if (GUILayout.Button("Take Screenshot")) script.TakeScreenshot(); // Button to take the screenshot.
+        if (GUILayout.Button("Open Folder")) script.OpenScreenshotFolder(); // Button to open the screenshots folder.
         serializedObject.ApplyModifiedProperties();
         EditorGUILayout.Space(15f);
         DrawDefaultInspector();

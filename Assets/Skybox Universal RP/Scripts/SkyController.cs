@@ -169,7 +169,10 @@ public class SkyController : MonoBehaviour
         SetProperties();
     }
 
-    // Updates the position and rotation of the sun, moon, and Milky Way based on time.
+    /// <summary>
+    /// Updates the position and rotation of the sun, moon, and Milky Way based on the current time.
+    /// Also updates the direction vectors in the skybox material to simulate celestial movement.
+    /// </summary>
     public void ControllerSunAndMoonTransform()
     {
         // Calculate the intensity of the sun and moon based on the current time.
@@ -302,16 +305,9 @@ public class SkyControllerEditor : Editor
     {
         serializedObject.Update();
         SkyController script = (SkyController)target;
-
-        if (GUILayout.Button("Save Gradient Texture"))
-        {
-            SaveGradientTexture(script);
-        }
-
+        if (GUILayout.Button("Save Gradient Texture")) SaveGradientTexture(script);
         EditorGUILayout.Space(15f);
-
         DrawDefaultInspector();
-
         serializedObject.ApplyModifiedProperties();
     }
 
