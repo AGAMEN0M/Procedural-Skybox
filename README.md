@@ -11,7 +11,7 @@ A simple procedural skybox which has day and night in unity universal render pip
 
 # Description
 
-This tool is compatible with Unity 6000.2.6f1 / URP 17.2.0. 
+This tool is compatible with Unity 6000.2.6f2 / URP 17.2.0. 
 
 You can find more information on how to use it on the YouTube Playlist: [Click Here.](https://www.youtube.com/playlist?list=PL5hnfx09yM4JHjqO7oGBE-ZkijXWdoY9H)
 
