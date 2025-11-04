@@ -39,14 +39,14 @@ public static class SkyControllerCreate
         }
 
         // Defines the required parent folder to limit search scope.
-        string requiredParent = "Assets/Skybox Universal RP/Database";
+        string requiredParent = "Skybox Universal RP/Database";
         string prefabPath = null;
 
         // Iterate over found prefabs to locate one in the required folder.
         foreach (var guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            if (path.StartsWith(requiredParent))
+            if (path.Contains(requiredParent))
             {
                 prefabPath = path;
                 break;

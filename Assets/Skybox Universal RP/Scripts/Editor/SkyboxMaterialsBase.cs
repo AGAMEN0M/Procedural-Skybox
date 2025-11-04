@@ -75,14 +75,14 @@ public static class SkyboxMaterialsCreator
         }
 
         // Defines the required parent folder where the base materials are located.
-        string requiredParent = "Assets/Skybox Universal RP/Database";
+        string requiredParent = "Skybox Universal RP/Database";
         string sourceFolderPath = null;
 
         // Looks for a base material inside the required parent folder.
         foreach (var guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            if (path.StartsWith(requiredParent))
+            if (path.Contains(requiredParent))
             {
                 sourceFolderPath = path;
                 break;

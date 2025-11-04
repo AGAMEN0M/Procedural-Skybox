@@ -5,9 +5,9 @@ A simple procedural skybox which has day and night in unity universal render pip
 
 [Original File](https://github.com/FlowingCrescent/SimpleProceduralSkybox_URP)
 
-[Skybox Universal RP - Package v0.0.3](https://drive.google.com/file/d/1ytWaWEFSrzkmUXNCegO6RJDrctwpdJLU/view?usp=drive_link)
+[Skybox Universal RP - Package v0.0.3](https://drive.google.com/file/d/1fVNXKuKlpUlQLGL4uAxvP3aeQVQ_bIKv/view?usp=drive_link)
  / 
-[Documentation](https://drive.google.com/file/d/1gwiojhE2n7rvvyUROzrAOjiMq7tu1NsU/view?usp=drive_link)
+[Documentation](https://drive.google.com/file/d/1mngfICwDZ1Ldtee5FMdGVTzYXLo6Vmgs/view?usp=drive_link)
 
 # Description
 

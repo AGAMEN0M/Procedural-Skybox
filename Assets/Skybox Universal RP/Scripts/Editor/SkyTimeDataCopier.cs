@@ -65,13 +65,13 @@ public static class SkyTimeDataCopier
         }
 
         // Ensure the folder is inside the required parent folder.
-        string requiredParent = "Assets/Skybox Universal RP/Database";
+        string requiredParent = "Skybox Universal RP/Database";
         string sourceFolderPath = null;
 
         foreach (var guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            if (path.StartsWith(requiredParent))
+            if (path.Contains(requiredParent))
             {
                 sourceFolderPath = path;
                 break;
