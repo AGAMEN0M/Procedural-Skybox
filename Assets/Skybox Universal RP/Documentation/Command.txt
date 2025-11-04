@@ -1,2 +1,19 @@
-Give a detailed explanation of the script without using csharp
+Give an explanation of how the script works, talking about each variable and method and Usage. without using csharp
+
+
+
+Give an explanation of how the script works, talking about each variable and method and Usage. without using csharp (if possible be neutral since both systems do the same thing)
+
+
+
+/*
+ * ---------------------------------------------------------------------------
+ * Description: [Add a short description of the script here.]
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
+
+Add comment, summary and Description. replacing the old ones
 

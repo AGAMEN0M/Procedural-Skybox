@@ -1,141 +1,256 @@
 /*
  * ---------------------------------------------------------------------------
  * Description: This script manages the UI for controlling various settings of the 
- *              SkyController component in Unity. It allows users to adjust time, time progression, 
- *              reverse time options, and day length through sliders, input fields, and dropdowns. 
- *              It also handles input validation and updates the SkyController settings based on 
- *              user input, providing a visual representation of the current time.
+ *              SkyController component in Unity. It allows users to adjust time, time 
+ *              progression, reverse time options, and day length through sliders, 
+ *              input fields, and dropdowns. It also handles input validation and 
+ *              updates the SkyController settings based on user input, providing 
+ *              a visual representation of the current time.
+ *              
  * Author: Lucas Gomes Cecchini
  * Pseudonym: AGAMENOM
  * ---------------------------------------------------------------------------
 */
-using UnityEngine;
-using UnityEngine.UI;
 
-[AddComponentMenu("Skybox URP/UI/Sky Controller Menu")]
+using UnityEngine.UI;
+using UnityEngine;
+
+using static UnityEngine.UI.InputField;
+using static SkyController;
+
+/// <summary>
+/// Provides UI control for adjusting time and day cycle parameters of the SkyController component.
+/// </summary>
+[AddComponentMenu("Skybox URP/UI/Sky Controller Menu [Legacy]")]
 public class SkyControllerMenu : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] private SkyController skyController; // SkyController component that will be changed.
-    [Space(10)]
-    [SerializeField] private Slider time; // Slider to control time.
-    [SerializeField] private Text hour; // Text that displays the time.
-    [SerializeField] private Dropdown timeGoes; // Dropdown to select time direction.
+    #region === Fields ===
+
+    [Header("Sky Controller Reference")]
+    [SerializeField, Tooltip("Reference to the SkyController component that will be modified.")]
+    private SkyController skyController; // Reference to the SkyController component.
+
+    [Header("UI Elements")]
+    [SerializeField, Tooltip("Slider for controlling the current time value.")]
+    private Slider timeSlider; // Slider for time control.
+
+    [SerializeField, Tooltip("Text element that displays the current time value.")]
+    private Text timeLabel; // Text displaying the time.
+
+    [SerializeField, Tooltip("Dropdown to select the time progression mode.")]
+    private Dropdown timeProgressionDropdown; // Dropdown for time progression mode.
+
     [Space(5)]
-    [SerializeField] private Toggle reverseTime; // Toggle to invert time.
+    [SerializeField, Tooltip("Toggle to enable or disable reverse time progression.")]
+    private Toggle reverseTimeToggle; // Toggle for reverse time.
+
     [Space(5)]
-    [SerializeField] private InputField timeSpeed; // Input field for the speed of time.
-    [SerializeField] private InputField timeOfDay; // Input field for day length.
+    [SerializeField, Tooltip("Input field to define time speed when using the speed-based progression mode.")]
+    private InputField timeSpeedInput; // Input for time speed.
+
+    [SerializeField, Tooltip("Input field to define the length of the day when using time-based progression.")]
+    private InputField dayLengthInput; // Input for day length.
+
+    #endregion
+
+    #region === Properties ===
+
+    /// <summary>
+    /// Gets or sets the SkyController reference controlled by this menu.
+    /// </summary>
+    public SkyController SkyControllerReference
+    {
+        get => skyController;
+        set => skyController = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the time slider used to adjust the current time value.
+    /// </summary>
+    public Slider TimeSlider
+    {
+        get => timeSlider;
+        set => timeSlider = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the text element that displays the current time.
+    /// </summary>
+    public Text TimeLabel
+    {
+        get => timeLabel;
+        set => timeLabel = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the dropdown for selecting the time progression mode.
+    /// </summary>
+    public Dropdown TimeProgressionDropdown
+    {
+        get => timeProgressionDropdown;
+        set => timeProgressionDropdown = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the toggle that enables or disables reverse time progression.
+    /// </summary>
+    public Toggle ReverseTimeToggle
+    {
+        get => reverseTimeToggle;
+        set => reverseTimeToggle = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the input field that defines the time speed value.
+    /// </summary>
+    public InputField TimeSpeedInput
+    {
+        get => timeSpeedInput;
+        set => timeSpeedInput = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the input field that defines the length of a day.
+    /// </summary>
+    public InputField DayLengthInput
+    {
+        get => dayLengthInput;
+        set => dayLengthInput = value;
+    }
+
+    #endregion
+
+    #region === Unity Lifecycle ===
 
     private void OnEnable()
     {
-        // Sets the initial values of UI elements based on SkyController settings.
-        time.value = skyController.time;
-        timeGoes.value = (int)skyController.timeGoes;
-        reverseTime.isOn = skyController.reverseTime;
-        timeSpeed.text = skyController.TimeSpeed.ToString();
-        timeOfDay.text = skyController.TimeOfDay.ToString();
+        // Initialize UI elements with values from the SkyController.
+        timeSlider.value = skyController.CurrentTime;
+        timeProgressionDropdown.value = (int)skyController.CurrentTimeMode;
+        reverseTimeToggle.isOn = skyController.IsReversedTime;
+        timeSpeedInput.text = skyController.TimeMultiplier.ToString();
+        dayLengthInput.text = skyController.DayDuration.ToString();
 
-        // Adds listeners for change events on UI elements.
-        time.onValueChanged.AddListener(UpdateTime);
-        timeGoes.onValueChanged.AddListener(UpdateTimeGoes);
-        reverseTime.onValueChanged.AddListener(UpdateReverseTime);
-        timeSpeed.onValueChanged.AddListener(UpdateTimeSpeed);
-        timeOfDay.onValueChanged.AddListener(UpdateTimeOfDay);
+        // Subscribe to UI event listeners.
+        timeSlider.onValueChanged.AddListener(OnTimeChanged);
+        timeProgressionDropdown.onValueChanged.AddListener(OnTimeProgressionChanged);
+        reverseTimeToggle.onValueChanged.AddListener(OnReverseTimeChanged);
+        timeSpeedInput.onValueChanged.AddListener(OnTimeSpeedChanged);
+        dayLengthInput.onValueChanged.AddListener(OnDayLengthChanged);
 
-        UpdateTimeGoesInteractable(skyController.timeGoes); // Configures the interaction of UI elements based on SkyController settings.
+        // Set up input field validation for numeric values.
+        ConfigureInputField(timeSpeedInput);
+        ConfigureInputField(dayLengthInput);
 
-        // Configures the input and validation types for the time InputFields.
-        timeSpeed.contentType = InputField.ContentType.DecimalNumber;
-        timeSpeed.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
-        timeSpeed.onValidateInput += ValidateNumericInput;
-        timeOfDay.contentType = InputField.ContentType.DecimalNumber;
-        timeOfDay.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
-        timeOfDay.onValidateInput += ValidateNumericInput;
-
-        UpdatePercentage(skyController.time); // Updates the percentage text based on the current time value.
+        // Update UI interactability and display.
+        UpdateTimeProgressionInteractable(skyController.CurrentTimeMode);
+        UpdateDisplayedTime(skyController.CurrentTime);
     }
 
     private void OnDisable()
     {
-        // Removes listeners for change events on UI elements.
-        time.onValueChanged.RemoveListener(UpdateTime);
-        timeGoes.onValueChanged.RemoveListener(UpdateTimeGoes);
-        reverseTime.onValueChanged.RemoveListener(UpdateReverseTime);
-        timeSpeed.onValueChanged.RemoveListener(UpdateTimeSpeed);
-        timeOfDay.onValueChanged.RemoveListener(UpdateTimeOfDay);
+        // Unsubscribe from UI event listeners.
+        timeSlider.onValueChanged.RemoveListener(OnTimeChanged);
+        timeProgressionDropdown.onValueChanged.RemoveListener(OnTimeProgressionChanged);
+        reverseTimeToggle.onValueChanged.RemoveListener(OnReverseTimeChanged);
+        timeSpeedInput.onValueChanged.RemoveListener(OnTimeSpeedChanged);
+        dayLengthInput.onValueChanged.RemoveListener(OnDayLengthChanged);
 
-        // Removes input validation on time InputFields.
-        timeSpeed.onValidateInput -= ValidateNumericInput;
-        timeOfDay.onValidateInput -= ValidateNumericInput;
+        // Remove input validation.
+        timeSpeedInput.onValidateInput -= ValidateNumericInput;
+        dayLengthInput.onValidateInput -= ValidateNumericInput;
     }
 
-    private void UpdateTime(float value)
+    #endregion
+
+    #region === Private Methods ===
+
+    /// <summary>
+    /// Configures the provided InputField for numeric input only.
+    /// </summary>
+    private void ConfigureInputField(InputField field)
     {
-        skyController.time = value; // Updates the time value in SkyController.
-        UpdatePercentage(value); // Updates the displayed percentage.
+        field.contentType = ContentType.DecimalNumber;
+        field.keyboardType = TouchScreenKeyboardType.NumbersAndPunctuation;
+        field.onValidateInput += ValidateNumericInput;
     }
 
-    private void UpdatePercentage(float value)
+    /// <summary>
+    /// Called when the time slider value changes.
+    /// </summary>
+    private void OnTimeChanged(float value)
     {
-        hour.text = $"H: {Mathf.RoundToInt(value)}"; // Updates the displayed time text.
+        skyController.CurrentTime = value; // Update the time value in the controller.
+        UpdateDisplayedTime(value); // Refresh the displayed time label.
     }
 
-    private void UpdateTimeGoes(int value)
+    /// <summary>
+    /// Updates the displayed time label based on the current time value.
+    /// </summary>
+    private void UpdateDisplayedTime(float value)
     {
-        skyController.timeGoes = (SkyController.TimeGoes)value; // Updates the time progression mode in SkyController.
-        UpdateTimeGoesInteractable((SkyController.TimeGoes)value); // Updates the interaction of UI elements based on progression mode.
+        timeLabel.text = $"H: {Mathf.RoundToInt(value)}"; // Update the label with the rounded hour value.
     }
 
-    private void UpdateReverseTime(bool value)
+    /// <summary>
+    /// Called when the time progression mode changes via the dropdown.
+    /// </summary>
+    private void OnTimeProgressionChanged(int value)
     {
-        skyController.reverseTime = value; // Updates the reverse weather option in SkyController.
+        skyController.CurrentTimeMode = (TimeMode)value; // Update time progression mode.
+        UpdateTimeProgressionInteractable((TimeMode)value); // Update UI interactivity.
     }
 
-    private void UpdateTimeSpeed(string value)
+    /// <summary>
+    /// Called when the reverse time toggle changes.
+    /// </summary>
+    private void OnReverseTimeChanged(bool value)
+    {
+        skyController.IsReversedTime = value; // Update reverse time setting.
+    }
+
+    /// <summary>
+    /// Called when the time speed input field changes.
+    /// </summary>
+    private void OnTimeSpeedChanged(string value)
     {
         if (float.TryParse(value, out float speed))
-        {
-            skyController.TimeSpeed = speed; // Updates time speed in SkyController.
-        }
+            skyController.TimeMultiplier = speed; // Update the time speed in SkyController.
     }
 
-    private void UpdateTimeOfDay(string value)
+    /// <summary>
+    /// Called when the day length input field changes.
+    /// </summary>
+    private void OnDayLengthChanged(string value)
     {
         if (float.TryParse(value, out float dayLength))
-        {
-            skyController.TimeOfDay = dayLength; // Updates the day length in SkyController.
-        }
+            skyController.DayDuration = dayLength; // Update the day length in SkyController.
     }
 
-    private void UpdateTimeGoesInteractable(SkyController.TimeGoes timeGoesValue)
+    /// <summary>
+    /// Updates the interactability of UI elements based on the selected time progression mode.
+    /// </summary>
+    private void UpdateTimeProgressionInteractable(TimeMode mode)
     {
-        bool enableTimeSpeed = timeGoesValue == SkyController.TimeGoes.TimeBySpeed;
-        bool enableTimeOfDay = timeGoesValue == SkyController.TimeGoes.TimeByTime;
-
-        // Configures the interaction of UI elements based on progression mode.
-        timeSpeed.interactable = enableTimeSpeed;
-        timeOfDay.interactable = enableTimeOfDay;
+        timeSpeedInput.interactable = mode == TimeMode.BySpeed;
+        dayLengthInput.interactable = mode == TimeMode.ByElapsedTime;
     }
 
+    /// <summary>
+    /// Validates numeric input for input fields, allowing digits and a single decimal point.
+    /// </summary>
     private char ValidateNumericInput(string text, int charIndex, char addedChar)
     {
-        // Checks whether the added character is a numeric digit or a decimal point.
         if (char.IsDigit(addedChar) || addedChar == '.')
         {
-            // Checks if the added character is a decimal point and if a dot already exists in the text.
-            if (addedChar == '.' && text.IndexOf('.') != -1)
+            if (addedChar == '.' && text.Contains("."))
             {
-                return '\0'; // If a dot already exists, returns a null character to prevent its addition.
+                return '\0'; // Prevent multiple decimal points.
             }
-            else
-            {
-                return addedChar; // If it is a valid numeric digit or dot, returns the added character.
-            }
+            return addedChar; // Accept valid characters.
         }
-        else
-        {
-            return '\0'; // If the character is not a numeric digit or a valid period, it returns a null character to prevent its addition.
-        }
+        return '\0'; // Reject invalid characters.
     }
+
+    #endregion
 }

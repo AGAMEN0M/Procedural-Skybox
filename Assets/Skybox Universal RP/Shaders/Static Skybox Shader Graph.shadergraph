@@ -4760,6 +4760,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "r": 0.11372549086809159,
         "g": 0.23529411852359773,
@@ -4790,6 +4792,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": 0.909500002861023,
         "y": -0.2923699915409088,
@@ -5179,8 +5183,8 @@
     "m_ObjectId": "08e8968fb8174587863b9cfb2b7b5c2f",
     "m_Title": "Sphere UV",
     "m_Position": {
-        "x": -4056.000244140625,
-        "y": 1804.0
+        "x": -4055.99951171875,
+        "y": 1803.1998291015625
     }
 }
 
@@ -5348,12 +5352,15 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"9eeb3482a3483334aa6b26011044a9db\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
     "useTilingAndOffset": false,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -5701,8 +5708,8 @@
     "m_ObjectId": "0d539135ddaf4ce09cacd89e972b0c7a",
     "m_Title": "Milkyway UVs (Milkyway pos)",
     "m_Position": {
-        "x": -2044.800048828125,
-        "y": 4512.80029296875
+        "x": -2044.7998046875,
+        "y": 4512.0
     }
 }
 
@@ -5909,6 +5916,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": 0.0,
         "y": -0.25881999731063845,
@@ -6233,10 +6242,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "126472231be142469037da4058585e7b",
     "m_Id": 1148844329,
-    "m_DisplayName": "sunSize",
+    "m_DisplayName": "Sun Size",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_sunSize",
+    "m_ShaderOutputName": "_Sun_Size",
     "m_StageCapability": 3,
     "m_Value": 1.0,
     "m_DefaultValue": 0.0,
@@ -6392,8 +6401,8 @@
     "m_ObjectId": "13949a6851254a2b8a38cb6e904ec020",
     "m_Title": "milkway2",
     "m_Position": {
-        "x": 4011.199951171875,
-        "y": 7750.39990234375
+        "x": 4011.19970703125,
+        "y": 7750.3994140625
     }
 }
 
@@ -6404,7 +6413,7 @@
     "m_Group": {
         "m_Id": "e0e3570fdc6842a3bdc04b9fd60e5df1"
     },
-    "m_Name": "calcSunAttenuation",
+    "m_Name": "Calculate Sun Attenuation",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -6811,6 +6820,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": 4.5,
         "y": 2.0,
@@ -6941,10 +6952,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "1c46189b4cb448f086ffb043d086ec00",
     "m_Id": 1,
-    "m_DisplayName": "Out_Vector4",
+    "m_DisplayName": "Output",
     "m_SlotType": 1,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Out_Vector4",
+    "m_ShaderOutputName": "Output",
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -7192,8 +7203,8 @@
     "m_ObjectId": "1d8e3565ffe74a398adcc1abc4455b50",
     "m_Title": "Scattering",
     "m_Position": {
-        "x": -1511.2001953125,
-        "y": 873.600341796875
+        "x": -1511.19970703125,
+        "y": 872.7999267578125
     }
 }
 
@@ -7426,8 +7437,8 @@
     "m_ObjectId": "1f4edfc673ff4389a07c17b39e0c1725",
     "m_Title": "milkway1",
     "m_Position": {
-        "x": 4011.199951171875,
-        "y": 6938.3994140625
+        "x": 4011.19970703125,
+        "y": 6937.599609375
     }
 }
 
@@ -7928,8 +7939,8 @@
     "m_ObjectId": "2a0366939f274a5ba5e9fb37e3e8c971",
     "m_Title": "Milkyway",
     "m_Position": {
-        "x": 312.79998779296877,
-        "y": 4695.19970703125
+        "x": 312.800048828125,
+        "y": 4695.19921875
     }
 }
 
@@ -9574,6 +9585,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": 0.0,
         "y": -0.9659299850463867,
@@ -9776,6 +9789,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "r": 0.30588236451148989,
         "g": 0.33725491166114809,
@@ -9869,12 +9884,24 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": 2.009999990463257,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 1.0,
         "y": 3.0
-    }
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -10144,8 +10171,8 @@
     "m_ObjectId": "3eb9344ab2d64b05b0b5355000be50d4",
     "m_Title": "Noise Static",
     "m_Position": {
-        "x": 1046.4000244140625,
-        "y": 5684.0
+        "x": 1046.39990234375,
+        "y": 5683.19970703125
     }
 }
 
@@ -10301,12 +10328,15 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"b1df4ca51cae7cd48ab3d3e4ea539cc9\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
     "useTilingAndOffset": true,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -10536,12 +10566,24 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": 0.6666666269302368,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
-    }
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -11141,12 +11183,15 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"4d9a3fc98871d4245bd7bbc6b853a460\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
     "useTilingAndOffset": true,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -11221,8 +11266,8 @@
     "m_ObjectId": "47626de66c844be4918c9d85426cb9d7",
     "m_Title": "MOON",
     "m_Position": {
-        "x": 928.0,
-        "y": 4059.19970703125
+        "x": 927.9996337890625,
+        "y": 4058.39892578125
     }
 }
 
@@ -11581,10 +11626,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "4992b125487b4279b0c83de297c09b70",
     "m_Id": 2079326778,
-    "m_DisplayName": "lightPos",
+    "m_DisplayName": "Light Pos",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_lightPos",
+    "m_ShaderOutputName": "_Light_Pos",
     "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
@@ -12436,6 +12481,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "r": 0.729411780834198,
         "g": 0.8549019694328308,
@@ -12571,6 +12618,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": 0.4399999976158142,
         "y": 0.8399999737739563,
@@ -13723,10 +13772,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "60bba5f5da2f4205ba1ce1d41e322c48",
     "m_Id": -682229961,
-    "m_DisplayName": "ray",
+    "m_DisplayName": "Ray",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_ray",
+    "m_ShaderOutputName": "_Ray",
     "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
@@ -15374,6 +15423,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": -0.31571999192237856,
         "y": -0.023360000923275949,
@@ -17381,6 +17432,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": -1.0,
         "y": 0.0,
@@ -17495,6 +17548,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "r": 0.9921568632125855,
         "g": 0.9607843160629273,
@@ -17706,8 +17761,8 @@
     "m_ObjectId": "8c9cc1b39db5410ea7c854b9099aec29",
     "m_Title": "SKY COLOR",
     "m_Position": {
-        "x": -312.79998779296877,
-        "y": 1807.2000732421875
+        "x": -312.7999267578125,
+        "y": 1806.39990234375
     }
 }
 
@@ -19264,8 +19319,8 @@
     "m_ObjectId": "9ca0dba5ffcb42d2a2c610bee50f6663",
     "m_Title": "MILKY COLOR",
     "m_Position": {
-        "x": 7012.7998046875,
-        "y": 6914.3994140625
+        "x": 7012.79931640625,
+        "y": 6912.79833984375
     }
 }
 
@@ -19521,12 +19576,24 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": 0.6666666865348816,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
-    }
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -19535,8 +19602,8 @@
     "m_ObjectId": "9fb521b6660b4f8e97bd24e2c124cdc8",
     "m_Title": "Moon Scattering",
     "m_Position": {
-        "x": -854.4000854492188,
-        "y": 4059.19970703125
+        "x": -854.3999633789063,
+        "y": 4058.39892578125
     }
 }
 
@@ -20860,12 +20927,15 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"935bf5d91b5757f468df2b958266e7cb\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
     "useTilingAndOffset": true,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -21360,8 +21430,8 @@
     "m_ObjectId": "b1aeebadb1bd43b98150ff92904ab39f",
     "m_Title": "MIlkwayBG",
     "m_Position": {
-        "x": 6084.7998046875,
-        "y": 8672.7998046875
+        "x": 6084.79931640625,
+        "y": 8671.9990234375
     }
 }
 
@@ -21457,6 +21527,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": 8.4443932735212e-8,
         "y": -0.2588193118572235,
@@ -21966,8 +22038,8 @@
     "m_ObjectId": "b8690e9a0de042d0b9f85b81da2edf92",
     "m_Title": "Milkyway col2",
     "m_Position": {
-        "x": 4783.2001953125,
-        "y": 7302.3994140625
+        "x": 4783.20068359375,
+        "y": 7301.59912109375
     }
 }
 
@@ -21977,8 +22049,8 @@
     "m_ObjectId": "b87a90d77d614107958ac71c11b6292a",
     "m_Title": "Noise Move 1",
     "m_Position": {
-        "x": 1046.4000244140625,
-        "y": 6135.19970703125
+        "x": 1046.39990234375,
+        "y": 6134.39990234375
     }
 }
 
@@ -24191,8 +24263,8 @@
     "m_ObjectId": "d01259d36cd14f599c2d8779681fb685",
     "m_Title": "MilkStar",
     "m_Position": {
-        "x": 5876.7998046875,
-        "y": 8290.3984375
+        "x": 5876.79931640625,
+        "y": 8290.3994140625
     }
 }
 
@@ -24216,12 +24288,24 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": 0.2666667103767395,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
-    }
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -24341,8 +24425,8 @@
     "m_ObjectId": "d15f9182a0be4e58814b26deae6f8949",
     "m_Title": "Sun Final",
     "m_Position": {
-        "x": -83.20001220703125,
-        "y": 517.600341796875
+        "x": -83.1998291015625,
+        "y": 516.7999267578125
     }
 }
 
@@ -25365,8 +25449,8 @@
     "m_ObjectId": "db76f957720b4a79a4e53ef31e5f3085",
     "m_Title": "Milkyway col1",
     "m_Position": {
-        "x": 4783.2001953125,
-        "y": 6914.3994140625
+        "x": 4783.20068359375,
+        "y": 6912.79833984375
     }
 }
 
@@ -25405,12 +25489,24 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": 0.019999999552965165,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
-    }
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -25755,12 +25851,24 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": 0.019999999552965165,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
-    }
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -25940,8 +26048,8 @@
     "m_ObjectId": "e0e3570fdc6842a3bdc04b9fd60e5df1",
     "m_Title": "Sun",
     "m_Position": {
-        "x": -2181.60009765625,
-        "y": 12.80029296875
+        "x": -2181.599853515625,
+        "y": 12.0
     }
 }
 
@@ -26133,7 +26241,7 @@
     "m_Title": "Noise Move 2",
     "m_Position": {
         "x": 2593.60009765625,
-        "y": 5959.19970703125
+        "y": 5958.39990234375
     }
 }
 
@@ -26266,6 +26374,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": -8.444391852435729e-8,
         "y": 0.2588193118572235,
@@ -26390,12 +26500,15 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"65fd1cb532fc542439308048e9adb5f1\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
     "useTilingAndOffset": true,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -26569,7 +26682,7 @@
     "m_Title": "new milkway",
     "m_Position": {
         "x": 2537.60009765625,
-        "y": 4588.80029296875
+        "y": 4588.00048828125
     }
 }
 
@@ -27121,12 +27234,24 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": 0.6666666865348816,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
-    }
+    },
+    "m_SliderType": 0,
+    "m_SliderPower": 3.0,
+    "m_EnumType": 0,
+    "m_CSharpEnumString": "",
+    "m_EnumNames": [
+        "Default"
+    ],
+    "m_EnumValues": [
+        0
+    ]
 }
 
 {
@@ -27347,6 +27472,8 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
     "m_Value": {
         "x": 0.2704299986362457,
         "y": 0.9560199975967407,
@@ -28192,8 +28319,8 @@
     "m_ObjectId": "f8a4b26537a34315aafe93094d88fd41",
     "m_Title": "STAR",
     "m_Position": {
-        "x": -1347.2001953125,
-        "y": 2403.999755859375
+        "x": -1347.19970703125,
+        "y": 2403.199951171875
     }
 }
 
